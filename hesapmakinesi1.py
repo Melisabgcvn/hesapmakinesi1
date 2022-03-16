@@ -5,7 +5,7 @@ form=tk.Tk()
 form.config(bg='#e0eeee')
 #formun arka plan rengi ayarlandı.
 
-form.title('Hesap Makinesi')
+form.title('Calculator')
 form.geometry('250x320+1300+1')
 #kod ekranıma göre formumu bilgisayarımın sağ köşesine sabitliyorum.Aynı zamanda formun boyutunu 250x320 olacak şekilde tanımladım.
 form.resizable(False,False) 
@@ -14,33 +14,36 @@ form.resizable(False,False)
 ifade=""
 #boş bir string değişken tanımlandı.
 
-def butona_tıkla(item):
+def select_button(item):
     global ifade
     ifade=ifade+str(item)
-    text_giris.set(ifade)  
+    text_input.set(str(ifade))  
     
 
-text_giris =tk.StringVar()  
+text_input =tk.StringVar()  
 #input almak için nesne yaratıldı.
   
 def Sil():
     #silme işlemi için fonksiyon oluşturuldu.
     global ifade
     ifade=""
-    text_giris.set("")
+    text_input.set("")
 
-def hata():
+
+def error():
     try:
         global ifade
         total=str(eval(ifade))
-        text_giris.set(total)
+        text_input.set(total)
         ifade=""
+        
     except:
-        text_giris.set("error")
+        text_input.set("error")
         ifade=""
+        print("Error")
         
         
-    print("hata yok.")
+    
 
 
 input_frame=tk.Frame(form).pack(side=tk.TOP)    
@@ -49,29 +52,29 @@ input_frame=tk.Frame(form).pack(side=tk.TOP)
 input_field=tk.Frame(form).pack(side=tk.TOP)
 #input_frame içindeki değeri alabilmek için bir frame daha oluşturuldu.
 
-input_field=tk.Entry(input_frame,textvariable=text_giris,width=20,font=('bold'))
+input_field=tk.Entry(input_frame,textvariable=text_input,width=20,font=('bold'))
 input_field.place(x=30,y=60)
 
 #son olarak butonlar için bir frame daha oluşturulacak.
 buton_frame=tk.Frame(form).place(x=110,y=230)
 
 #BUTTONS
-bir=tk.Button(buton_frame,text="1",width=1,height=1,bg='#e6e6fa',command= lambda: butona_tıkla(1)).place(x=30,y=220)
-iki=tk.Button(buton_frame,text="2",width=1,height=1,bg='#e6e6fa',command= lambda: butona_tıkla(2)).place(x=80,y=220)
-uç=tk.Button(buton_frame,text="3",width=1,height=1,bg='#e6e6fa',command= lambda: butona_tıkla(3)).place(x=130,y=220)
-dort=tk.Button(buton_frame,text="4",width=1,height=1,bg='#e6e6fa',command= lambda: butona_tıkla(4)).place(x=30,y=190)
-bes=tk.Button(buton_frame,text="5",width=1,height=1,bg='#e6e6fa',command= lambda: butona_tıkla(5)).place(x=80,y=190)
-alti=tk.Button(buton_frame,text="6",width=1,height=1,bg='#e6e6fa',command= lambda: butona_tıkla(6)).place(x=130,y=190)
-yedi=tk.Button(buton_frame,text="7",width=1,height=1,bg='#e6e6fa',command= lambda: butona_tıkla(7)).place(x=30,y=160)
-sekiz=tk.Button(buton_frame,text="8",width=1,height=1,bg='#e6e6fa',command= lambda: butona_tıkla(8)).place(x=80,y=160)
-dokuz=tk.Button(buton_frame,text="9",width=1,height=1,bg='#e6e6fa',command= lambda: butona_tıkla(9)).place(x=130,y=160)
-carp=tk.Button(buton_frame,text="*",width=1,height=1,bg='#e6e6fa',command= lambda: butona_tıkla("*")).place(x=180,y=190)
-bol=tk.Button(buton_frame,text="/",width=1,height=1,bg='#e6e6fa',command= lambda: butona_tıkla("/")).place(x=180,y=160)
-cikar=tk.Button(buton_frame,text="-",width=1,height=1,bg='#e6e6fa',command= lambda: butona_tıkla("-")).place(x=180,y=220)
-topla=tk.Button(buton_frame,text="+",width=1,height=1,bg='#e6e6fa',command= lambda: butona_tıkla("+")).place(x=180,y=250)
-nokta=tk.Button(buton_frame,text=" .",width=1,height=1,bg='#e6e6fa',command= lambda: butona_tıkla(".")).place(x=80,y=250)
-sifir=tk.Button(buton_frame,text="0",width=1,height=1,bg='#e6e6fa',command= lambda: butona_tıkla(0)).place(x=30,y=250)
-esit=tk.Button(buton_frame,text="=",width=1,height=1,bg='#e6e6fa',command= lambda: hata()).place(x=130,y=250)
+one=tk.Button(buton_frame,text="1",width=1,height=1,bg='#e6e6fa',command= lambda: select_button(1)).place(x=30,y=220)
+two=tk.Button(buton_frame,text="2",width=1,height=1,bg='#e6e6fa',command= lambda: select_button(2)).place(x=80,y=220)
+three=tk.Button(buton_frame,text="3",width=1,height=1,bg='#e6e6fa',command= lambda: select_button(3)).place(x=130,y=220)
+four=tk.Button(buton_frame,text="4",width=1,height=1,bg='#e6e6fa',command= lambda: select_button(4)).place(x=30,y=190)
+five=tk.Button(buton_frame,text="5",width=1,height=1,bg='#e6e6fa',command= lambda: select_button(5)).place(x=80,y=190)
+six=tk.Button(buton_frame,text="6",width=1,height=1,bg='#e6e6fa',command= lambda: select_button(6)).place(x=130,y=190)
+seven=tk.Button(buton_frame,text="7",width=1,height=1,bg='#e6e6fa',command= lambda: select_button(7)).place(x=30,y=160)
+eight=tk.Button(buton_frame,text="8",width=1,height=1,bg='#e6e6fa',command= lambda: select_button(8)).place(x=80,y=160)
+nine=tk.Button(buton_frame,text="9",width=1,height=1,bg='#e6e6fa',command= lambda: select_button(9)).place(x=130,y=160)
+multiplication=tk.Button(buton_frame,text="*",width=1,height=1,bg='#e6e6fa',command= lambda: select_button("*")).place(x=180,y=190)
+division=tk.Button(buton_frame,text="/",width=1,height=1,bg='#e6e6fa',command= lambda: select_button("/")).place(x=180,y=160)
+minus=tk.Button(buton_frame,text="-",width=1,height=1,bg='#e6e6fa',command= lambda: select_button("-")).place(x=180,y=220)
+plus=tk.Button(buton_frame,text="+",width=1,height=1,bg='#e6e6fa',command= lambda: select_button("+")).place(x=180,y=250)
+point=tk.Button(buton_frame,text=" .",width=1,height=1,bg='#e6e6fa',command= lambda: select_button(".")).place(x=80,y=250)
+zero=tk.Button(buton_frame,text="0",width=1,height=1,bg='#e6e6fa',command= lambda: select_button(0)).place(x=30,y=250)
+esit=tk.Button(buton_frame,text="=",width=1,height=1,bg='#e6e6fa',command= lambda: error()).place(x=130,y=250)
 sil=tk.Button(buton_frame,text="C",width=3,height=1,bg='#e6e6fa',command= lambda: Sil()).place(x=165,y=120)
 
 
