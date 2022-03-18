@@ -23,7 +23,7 @@ def select_button(item):
 text_input =tk.StringVar()  
 #input almak için nesne yaratıldı.
   
-def Sil():
+def Delete():
     #silme işlemi için fonksiyon oluşturuldu.
     global ifade
     ifade=""
@@ -74,8 +74,8 @@ minus=tk.Button(buton_frame,text="-",width=1,height=1,bg='#e6e6fa',command= lamb
 plus=tk.Button(buton_frame,text="+",width=1,height=1,bg='#e6e6fa',command= lambda: select_button("+")).place(x=180,y=250)
 point=tk.Button(buton_frame,text=" .",width=1,height=1,bg='#e6e6fa',command= lambda: select_button(".")).place(x=80,y=250)
 zero=tk.Button(buton_frame,text="0",width=1,height=1,bg='#e6e6fa',command= lambda: select_button(0)).place(x=30,y=250)
-esit=tk.Button(buton_frame,text="=",width=1,height=1,bg='#e6e6fa',command= lambda: error()).place(x=130,y=250)
-sil=tk.Button(buton_frame,text="C",width=3,height=1,bg='#e6e6fa',command= lambda: Sil()).place(x=165,y=120)
+equal=tk.Button(buton_frame,text="=",width=1,height=1,bg='#e6e6fa',command= lambda: error()).place(x=130,y=250)
+deleted=tk.Button(buton_frame,text="C",width=3,height=1,bg='#e6e6fa',command= lambda: Delete()).place(x=165,y=120)
 
 
 form.mainloop() #formun açık halde durabilmesi için.
